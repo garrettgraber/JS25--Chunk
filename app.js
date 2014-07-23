@@ -4,12 +4,14 @@ var arrayCompressor = function(inArrayLength, chunkSize) {
 	
 	var base = Math.floor( inArrayLength / chunkSize );
 	var baseAdd = inArrayLength % chunkSize;
-	var outArray = new Array(chunkSize);
+	var outArray = [];
 	
 	//possible map or foreach
-	for(var i=0; i < outArray.length; i++) {
-		outArray[ i ] = base;
+	for(var i=0; i < chunkSize; i++) {
+		outArray.push(base);
 	}
+
+	// outArray = outArray.map(function() {return base;});
 
 	for(var i=0; i < baseAdd; i++) {
 	
@@ -40,4 +42,14 @@ var chunk = function(inArray, chunkSize) {
 		outArray.push( tempSlice );
 	}
 	return outArray;
+};
+
+var generateArraryIntegers = function(arrayEnd) {
+
+	var outArray = new Array(arrayEnd);
+	for(var i=0; i < outArray.length; i++) {
+		outArray[ i ] = i + 1;
+	}
+	return outArray;
+
 };
