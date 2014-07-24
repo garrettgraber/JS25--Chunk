@@ -1,3 +1,16 @@
+var chunk = function(inArray, chunkSize) {
+	var base = Math.floor( inArray.length / chunkSize );
+	var baseAdd = inArray.length % chunkSize;
+	var outArray = [];
+	var startSlice = 0;
+	var endSlice;
+	for(var i=0; i < chunkSize; i++) {
+		(i < baseAdd) ? endSlice = startSlice + base + 1 : endSlice = startSlice + base;
+		outArray.push( inArray.slice(startSlice, endSlice) );
+		var startSlice = endSlice;
+	}
+	return outArray;
+};
 
 //Input an array length and the size of the internal arrays
 var arrayCompressor = function(inArrayLength, chunkSize) {
@@ -15,7 +28,7 @@ var arrayCompressor = function(inArrayLength, chunkSize) {
 	return outArray;
 };
 
-var chunk = function(inArray, chunkSize) {
+var chunkOriginal = function(inArray, chunkSize) {
 	if(inArray.length < chunkSize) {
 		return false;
 	}
@@ -40,16 +53,3 @@ var generateArraryIntegers = function(arrayEnd) {
 
 };
 
-var foo = function(inArray, chunkSize) {
-	var base = Math.floor( inArray.length / chunkSize );
-	var baseAdd = inArray.length % chunkSize;
-	var outArray = [];
-	var startSlice = 0;
-	var endSlice;
-	for(var i=0; i < chunkSize; i++) {
-		(i < baseAdd) ? endSlice = startSlice + base + 1 : endSlice = startSlice + base;
-		outArray.push( inArray.slice(startSlice, endSlice) );
-		var startSlice = endSlice;
-	}
-	return outArray;
-};
