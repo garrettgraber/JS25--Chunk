@@ -1,9 +1,8 @@
+
 var chunk = function(inArray, chunkSize) {
 	var base = Math.floor( inArray.length / chunkSize );
 	var baseAdd = inArray.length % chunkSize;
-	var outArray = [];
-	var startSlice = 0;
-	var endSlice;
+	var outArray = [], startSlice = 0, endSlice;
 	for(var i=0; i < chunkSize; i++) {
 		(i < baseAdd) ? endSlice = startSlice + base + 1 : endSlice = startSlice + base;
 		outArray.push( inArray.slice(startSlice, endSlice) );
@@ -53,3 +52,4 @@ var generateArraryIntegers = function(arrayEnd) {
 
 };
 
+module.exports = {chunk: chunk, generateArraryIntegers: generateArraryIntegers};
